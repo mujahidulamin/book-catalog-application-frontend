@@ -1,22 +1,18 @@
-import { RiFacebookBoxFill, RiInstagramLine } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 export default function Footer() {
-  const date = new Date();
-  const year = date.getFullYear();
-
   return (
-    <div className=" bg-sky-50 px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:px-8">
+    <div className=" bg-sky-200 px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:px-8">
       <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2">
           <Link
-            to='/'
-            aria-label='Enviable Learning'
-            title='Enviable Learning'
-            className='inline-flex items-center'
+            to="/"
+            aria-label="Enviable Learning"
+            title="Enviable Learning"
+            className="inline-flex items-center"
           >
-            <img className='img' src= {''} alt="" />
-            <span className='ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase'>
-            Enviable Learning
+            <img src={""} alt="" />
+            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+              BookHub
             </span>
           </Link>
         </div>
@@ -75,7 +71,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href='/'
+              href="/"
               className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
@@ -87,7 +83,8 @@ export default function Footer() {
       </div>
       <div className="pt-5 pb-10 border-t lg:flex-row">
         <p className="text-sm text-gray-600 text-center">
-          © Copyright 2022 - All rights reserved by <span className="text-warning font-bold">Enviable Learning</span>
+          © Copyright 2023 - All rights reserved by{" "}
+          <span className="text-blue-500 font-bold">BookHub</span>
         </p>
       </div>
     </div>
