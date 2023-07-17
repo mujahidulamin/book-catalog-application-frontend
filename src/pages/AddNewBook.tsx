@@ -20,7 +20,6 @@ interface IBookInfo {
   genre: string;
   publicationDate: string;
   image: string;
-  summary?: string;
   customerReviews?: [];
 }
 
@@ -40,7 +39,6 @@ const AddNewBook = () => {
     genre: "",
     publicationDate: "",
     image: "",
-    summary: "",
   });
 
   const handleChange = (
@@ -88,7 +86,6 @@ const AddNewBook = () => {
         genre: "",
         publicationDate: "",
         image: "",
-        summary: "",
       });
       navigate("/allBooks");
       setIsLoad(false);

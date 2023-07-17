@@ -13,6 +13,7 @@ import {
   useBookDetailsQuery,
   useUpdateBookMutation,
 } from "../redux/features/books/booksApi";
+import { Helmet } from "react-helmet";
 
 interface IBook {
   email: string;
@@ -21,7 +22,6 @@ interface IBook {
   genre: string;
   publicationDate: string;
   image: string;
-  summary: string;
 }
 
 const EditBook: React.FC = () => {
@@ -34,7 +34,6 @@ const EditBook: React.FC = () => {
     genre: "",
     publicationDate: "",
     image: "",
-    summary: "",
   });
 
   // Call the useBookDetailsQuery hook
@@ -92,7 +91,7 @@ const EditBook: React.FC = () => {
     if (response?.data) {
       swal(response?.data?.message, "", "success");
       if (id) {
-        navigate(`/details/${id}`);
+        navigate(`/bookDetails/${id}`);
       }
       setIsLoading(false);
     } else {
@@ -102,119 +101,132 @@ const EditBook: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-[350px] py-8">
-      <h1 className="text-2xl font-bold mb-6">Edit Book Information</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="title" className="block mb-2 font-medium">
-            Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={bookInfo.title}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="author" className="block mb-2 font-medium">
-            Author
-          </label>
-          <input
-            type="text"
-            id="author"
-            name="author"
-            value={bookInfo.author}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="genre" className="block mb-2 font-medium">
-            Genre
-          </label>
-          <select
-            id="genre"
-            name="genre"
-            value={bookInfo.genre}
-            onChange={handleSelectChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-          >
-            <option value="">Select Genre</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Science Fiction">Science Fiction</option>
-            <option value="Mystery">Mystery</option>
-            <option value="Romance">Romance</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <label htmlFor="publicationDate" className="block mb-2 font-medium">
-            Publication Date
-          </label>
-          <input
-            type="date"
-            id="publicationDate"
-            name="publicationDate"
-            value={bookInfo.publicationDate}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="image" className="text-lg font-semibold mb-3">
-            Book Image
-          </label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="w-full mt-2"
-          />
-        </div>
-        {bookInfo.image && (
+    <>
+      <Helmet>
+        <title>Edit a book</title>
+      </Helmet>
+
+      <h1 className="text-4xl font-bold mb-4 text-center mt-8 ">
+        Edit Your Book
+      </h1>
+
+      <div className="max-w-lg mx-auto my-[50px] p-5 border">
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <img
-              src={bookInfo.image}
-              alt="Book Cover"
-              className="max-w-full mb-2"
-              height="350px"
-              width="260px"
+            <label className="label">
+              <span className="label-text font-bold text-sm">
+                Name of the Author
+              </span>
+            </label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={bookInfo.title}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
             />
           </div>
-        )}
-        <div className="mb-4">
-          <label htmlFor="summary" className="block mb-2 font-medium">
-            Summary
-          </label>
-          <textarea
-            id="summary"
-            name="summary"
-            value={bookInfo.summary}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-          ></textarea>
-        </div>
-        {isLoading ? (
-          <button
-            disabled
-            className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600"
-          >
-            Loading...
-          </button>
-        ) : (
-          <button
-            type="submit"
-            className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600"
-          >
-            Update Book
-          </button>
-        )}
-      </form>
-    </div>
+          <div className="mb-4">
+            <label className="label">
+              <span className="label-text font-bold text-sm">
+                Select a Genre
+              </span>
+            </label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              value={bookInfo.author}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="label">
+              <span className="label-text font-bold text-sm">
+                Select a Genre
+              </span>
+            </label>
+            <select
+              id="genre"
+              name="genre"
+              value={bookInfo.genre}
+              onChange={handleSelectChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+            >
+              <option value="">Select Genre</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Drama">Drama</option>
+              <option value="Drama">Horror</option>
+              <option value="Drama">Detective</option>
+            </select>
+          </div>
+          <div className="mb-4">
+            <label className="label">
+              <span className="label-text font-bold text-sm">
+                {" "}
+                Select a Publication Date
+              </span>
+            </label>
+            <input
+              type="date"
+              id="publicationDate"
+              name="publicationDate"
+              value={bookInfo.publicationDate}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="label">
+              <span className="label-text font-bold text-sm">
+                {" "}
+                Choose a image
+              </span>
+            </label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              onChange={handleImageUpload}
+              className="w-full px-4 py-2 border"
+            />
+          </div>
+          {bookInfo.image && (
+            <div className="mb-4">
+              <img
+                src={bookInfo.image}
+                alt="Book Cover"
+                className="max-w-full mb-2"
+                height="350px"
+                width="260px"
+              />
+            </div>
+          )}
+          {isLoading ? (
+            <button
+              disabled
+              className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600"
+            >
+              Loading...
+            </button>
+          ) : (
+            <div className="text-center">
+              <button
+                type="submit"
+                className="btn px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 my-2"
+              >
+                Update Book
+              </button>
+            </div>
+          )}
+        </form>
+      </div>
+    </>
   );
 };
 
