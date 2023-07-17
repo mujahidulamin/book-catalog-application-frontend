@@ -100,14 +100,14 @@ const SignIn = () => {
               {isLoading ? (
                 <button
                   disabled
-                  className="w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors"
+                  className="w-full btn px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 my-2"
                 >
                   Loading...
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors"
+                  className="btn px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 my-2 w-full"
                 >
                   Sign In
                 </button>
@@ -115,7 +115,7 @@ const SignIn = () => {
               <p className="text-gray-700 text-md mt-4 text-center">
               New to BookHub?{" "}
                 <Link to="/signup">
-                  <a className="text-indigo-500 font-semibold hover:text-indigo-700">
+                  <a className="text-sky-500 font-semibold hover:text-sky-700">
                     Sign Up
                   </a>
                 </Link>

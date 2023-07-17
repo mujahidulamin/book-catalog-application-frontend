@@ -26,6 +26,7 @@ const Signup = () => {
     try {
       const credential = { email, password };
       dispatch(setLoading(true));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const response: any = await signUpMutation(credential);
       if (response.data) {
         swal(response?.data?.message, "", "success");
@@ -36,6 +37,7 @@ const Signup = () => {
         swal(response?.error?.data?.message, "", "error");
       }
       dispatch(setLoading(false));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error("Sign-up failed:", error);
       dispatch(setLoading(false));
