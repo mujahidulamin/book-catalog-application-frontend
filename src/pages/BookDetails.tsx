@@ -200,15 +200,6 @@ const BookDetails = () => {
                     placeholder="Give your review about the book"
                     className="textarea textarea-bordered textarea-xs w-full"
                   ></textarea>
-
-                  {/* <textarea
-                    id="review"
-                    value={reviewComment}
-                    onChange={(e) => setReviewComment(e.target.value)}
-                    className="w-full h-32 p-2 mb-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-                    placeholder="Give your review about the book"
-                    required
-                  ></textarea> */}
                   {isLoading ? (
                     <button
                       disabled

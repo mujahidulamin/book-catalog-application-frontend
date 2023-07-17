@@ -1,19 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import AllBooks from "../pages/AllBooks";
 import BookDetails from "../pages/BookDetails";
 import AddNewBook from "../pages/AddNewBook";
 import EditBook from "../pages/EditBook";
 import PrivateRoute from "./PrivateRoute";
-import NotFound from "../pages/NotFound";
+import SignIn from "../pages/SignIn";
+import NotFound from "../components/ErrorPage";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         index: true,
@@ -47,15 +48,11 @@ const routes = createBrowserRouter([
   },
   {
     path: "/signIn",
-    element: <Login />,
+    element: <SignIn></SignIn>,
   },
   {
     path: "/signUp",
     element: <Signup />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
   },
 ]);
 

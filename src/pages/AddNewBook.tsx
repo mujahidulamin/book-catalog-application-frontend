@@ -103,6 +103,7 @@ const AddNewBook = () => {
       <Helmet>
         <title>Add New Book</title>
       </Helmet>
+      
       <h2 className="text-4xl font-bold mb-4 text-center mt-8">
         Add a New Book
       </h2>
@@ -155,11 +156,10 @@ const AddNewBook = () => {
               required
             >
               <option value="">Select Genre</option>
+              <option value="Fiction">Fiction</option>
               <option value="Fantasy">Fantasy</option>
-              <option value="Science Fiction">Science Fiction</option>
-              <option value="Mystery">Mystery</option>
-              <option value="Historical Fiction">Historical Fiction</option>
-              <option value="Poetry">Poetry</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Drama">Drama</option>
             </select>
           </div>
           <div className="mb-4">
