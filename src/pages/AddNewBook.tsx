@@ -103,13 +103,16 @@ const AddNewBook = () => {
       <Helmet>
         <title>Add New Book</title>
       </Helmet>
-
-      <div className="max-w-md mx-auto my-[50px]">
-        <h2 className="text-2xl font-bold mb-4">Add a New Book</h2>
+      <h2 className="text-4xl font-bold mb-4 text-center mt-8">
+        Add a New Book
+      </h2>
+      <div className="max-w-md mx-auto my-[50px] p-5 border">
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="title" className="text-lg font-semibold mb-3">
-              Title
+          <div className="form-control w-full ">
+            <label className="label">
+              <span className="label-text font-bold text-sm">
+                Name of the Title
+              </span>
             </label>
             <input
               type="text"
@@ -122,8 +125,10 @@ const AddNewBook = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="author" className="text-lg font-semibold mb-3">
-              Author Name
+            <label className="label">
+              <span className="label-text font-bold text-sm">
+                Name of the Author
+              </span>
             </label>
             <input
               type="text"
@@ -136,8 +141,10 @@ const AddNewBook = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="genre" className="text-lg font-semibold mb-3">
-              Genre
+            <label className="label">
+              <span className="label-text font-bold text-sm">
+                Select a Genre
+              </span>
             </label>
             <select
               id="genre"
@@ -156,11 +163,11 @@ const AddNewBook = () => {
             </select>
           </div>
           <div className="mb-4">
-            <label
-              htmlFor="publicationDate"
-              className="text-lg font-semibold mb-3"
-            >
-              Publication Date
+            <label className="label">
+              <span className="label-text font-bold text-sm">
+                {" "}
+                Select a Publication Date
+              </span>
             </label>
             <input
               type="date"
@@ -173,8 +180,11 @@ const AddNewBook = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="image" className="text-lg font-semibold mb-3">
-              Book Image
+            <label className="label">
+              <span className="label-text font-bold text-sm">
+                {" "}
+                Choose a image
+              </span>
             </label>
             <input
               type="file"
@@ -182,7 +192,7 @@ const AddNewBook = () => {
               name="image"
               accept="image/*"
               onChange={handleImageUpload}
-              className="w-full"
+              className="w-full px-4 py-2 border"
               required
             />
           </div>
@@ -197,18 +207,6 @@ const AddNewBook = () => {
               />
             </div>
           )}
-          <div className="mb-4">
-            <label htmlFor="summary" className="text-lg font-semibold mb-3">
-              Book Summary (Optional)
-            </label>
-            <textarea
-              id="summary"
-              name="summary"
-              value={bookInfo.summary}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-            ></textarea>
-          </div>
           {isLoad ? (
             <button
               disabled
@@ -217,12 +215,14 @@ const AddNewBook = () => {
               Loading...
             </button>
           ) : (
-            <button
-              type="submit"
-              className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600"
-            >
-              Add Book
-            </button>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="btn px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 my-2"
+              >
+                Add Book
+              </button>
+            </div>
           )}
         </form>
       </div>
