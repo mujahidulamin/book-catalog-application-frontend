@@ -20,11 +20,12 @@ interface IBook {
 
 const AllBooks = () => {
   const genres = [
-    "Mystery",
+    "Fiction",
     "Fantasy",
-    "Science Fiction",
-    "Historical Fiction",
-    "Poetry",
+    "Drama",
+    "Comedy",
+    "Horror",
+    "Detective",
   ];
 
   const publicationYears = [
@@ -46,12 +47,12 @@ const AllBooks = () => {
   // Filter Books
   const [selectGenre, setSelectGenre] = useState("");
   const [searchText, setSearchText] = useState("");
-  const [selectpublicationYear, setSelectPublicationYear] = useState("");
+  const [selectPublicationYear, setSelectPublicationYear] = useState("");
 
   const { data: books, isLoading } = useGetAllBooksQuery({
     search: searchText,
     genre: selectGenre,
-    publicationYear: selectpublicationYear
+    publicationYear: selectPublicationYear
   });
 
   return (
@@ -114,7 +115,7 @@ const AllBooks = () => {
                           id={year}
                           type="radio"
                           name="year"
-                          checked={selectpublicationYear === year}
+                          checked={selectPublicationYear === year}
                         />
                         <label className="text-[14px] ml-3" htmlFor={year}>
                           {year}

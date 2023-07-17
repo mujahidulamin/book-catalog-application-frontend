@@ -158,7 +158,7 @@ const BookDetails = () => {
 
               {/* Buttons */}
               <div className="flex justify-center mt-8 mb-8">
-                <Link to={`/edit-book/${book._id}`}>
+                <Link to={`/editBook/${book._id}`}>
                   {email === book?.email && (
                     <button className="btn btn-success flex items-center px-4 py-[3px] mr-3">
                       <FaEdit className="text-[18px] mr-2" /> <span>Edit</span>

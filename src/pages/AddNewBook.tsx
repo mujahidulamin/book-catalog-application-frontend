@@ -103,7 +103,7 @@ const AddNewBook = () => {
       <Helmet>
         <title>Add New Book</title>
       </Helmet>
-      
+
       <h2 className="text-4xl font-bold mb-4 text-center mt-8">
         Add a New Book
       </h2>
@@ -160,6 +160,8 @@ const AddNewBook = () => {
               <option value="Fantasy">Fantasy</option>
               <option value="Comedy">Comedy</option>
               <option value="Drama">Drama</option>
+              <option value="Drama">Horror</option>
+              <option value="Drama">Detective</option>
             </select>
           </div>
           <div className="mb-4">

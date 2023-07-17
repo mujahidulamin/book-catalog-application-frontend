@@ -87,6 +87,7 @@ const EditBook: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const response: any = await updateBook({ id: id, data: bookInfo });
     if (response?.data) {
       swal(response?.data?.message, "", "success");
