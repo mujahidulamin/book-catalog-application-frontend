@@ -29,15 +29,21 @@ const Home = () => {
 
       <div className="w-full mx-auto">
         <Banner></Banner>
+      </div>
 
-        <div className="mt-[20px] mb-[100px]">
-          <h3 className="text-[20px] font-[500] text-left mb-[20px]">
-            Recently Added Books
-          </h3>
-          <div className="grid grid-cols-3 gap-x-10 gap-y-10">
+      <div>
+        <h1 className="text-center text-4xl font-bold mt-12">
+          Recently Added Books
+        </h1>
+
+        <div
+          className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full
+        lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20"
+        >
+          <div className="grid gap-12 row-gap-5 mb-8 lg:grid-cols-3 md:grid-cols-2 lg:row-gap-8">
             {books?.books?.map((book: IBook, i: number) => {
               return (
-                <Link key={i} to={`/details/${book._id}`}>
+                <Link key={i} to={`/bookDetails/${book._id}`}>
                   <Card book={book} />
                 </Link>
               );
