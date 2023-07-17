@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-misused-promises */
@@ -89,7 +90,7 @@ const AddNewBook = () => {
         image: "",
         summary: "",
       });
-      navigate("/all-books");
+      navigate("/allBooks");
       setIsLoad(false);
     } else {
       swal("Book Added Failed", "", "error");

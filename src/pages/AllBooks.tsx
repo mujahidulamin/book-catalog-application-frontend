@@ -150,7 +150,7 @@ const AllBooks = () => {
               <div className="grid grid-cols-3 gap-x-10 gap-y-10">
                 {books?.books?.map((book: IBook, i: number) => {
                   return (
-                    <Link key={i} to={`/details/${book?._id}`}>
+                    <Link key={i} to={`/bookDetails/${book?._id}`}>
                       <Card book={book} />
                     </Link>
                   );

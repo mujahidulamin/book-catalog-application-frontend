@@ -1,5 +1,3 @@
-import moment from "moment";
-
 interface IBook {
   book: {
     title: string;

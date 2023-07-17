@@ -9,8 +9,10 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import swal from "sweetalert";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { AiFillDelete } from "react-icons/ai";
-import { FiEdit2 } from "react-icons/fi";
+
+import { FaEdit } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
+
 import {
   useBookDetailsQuery,
   useBookReviewMutation,
@@ -68,6 +70,7 @@ const BookDetails = () => {
       if (willDelete) {
         if (id) {
           setDeleteLoad(true);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const response: any = await deleteBook(id);
           if (response?.data) {
             swal(response?.data?.message, "", "success");
@@ -89,6 +92,7 @@ const BookDetails = () => {
   const handleAddReview = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const response: any = await addReview({
       id: id,
       data: { email: email, comment: reviewComment },
@@ -110,80 +114,101 @@ const BookDetails = () => {
       <div className="container mx-auto py-8">
         {isLoader ? (
           <div className="text-center">
-            <h3 className="text-3xl font-bold">Loading...</h3>
+            <div className="flex justify-center items-center mt-48 mb-48">
+              <div
+                className="spinner-border animate-spin border-cyan-500 inline-block w-8 h-8 border-4 rounded-full"
+                role="status"
+              >
+                <span className="visually-hidden"></span>
+              </div>
+            </div>
           </div>
         ) : book ? (
-          <div className="flex flex-wrap items-start mx-[80px]">
-            <div className="w-full md:w-1/2 lg:w-1/3">
+          <div>
+            <div className="flex justify-center">
               <img
                 src={book.image}
                 alt={book.title}
                 className="max-w-full rounded shadow-lg"
               />
             </div>
-            <div className="w-full md:w-1/2 lg:w-2/3 pl-8">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold mb-4">{book.title}</h2>
-                {/* Buttons */}
-                <div className="flex items-center">
-                  <Link to={`/edit-book/${book._id}`}>
-                    {email === book?.email && (
-                      <button className="flex items-center px-4 py-[3px] bg-green-500 text-white rounded hover:bg-green-600 mr-3">
-                        <FiEdit2 className="text-[18px] mr-2" />{" "}
-                        <span>Edit</span>
-                      </button>
-                    )}
-                  </Link>
-                  {email === book?.email &&
-                    (isDeleteLoad ? (
-                      <button
-                        disabled
-                        className="flex items-center px-4 py-[3px] bg-red-500 text-white rounded hover:bg-red-600 ml-3"
-                      >
-                        Loading...
-                      </button>
-                    ) : (
-                      <button
-                        // eslint-disable-next-line @typescript-eslint/no-misused-promises
-                        onClick={handleDeleteBook}
-                        className="flex items-center px-4 py-[3px] bg-red-500 text-white rounded hover:bg-red-600 ml-3"
-                      >
-                        <AiFillDelete className="text-[18px] mr-2" />{" "}
-                        <span>Delete</span>
-                      </button>
-                    ))}
-                </div>
+            <div className="mt-8">
+              <div className="flex justify-center">
+                <h2 className="text-lg mb-2">
+                  <span className="font-bold"> Title: </span>
+                  {book.title}
+                </h2>
               </div>
-              <p className="text-lg mb-2">
-                <span className="font-bold">Author:</span> {book.author}
-              </p>
-              <p className="text-lg mb-2">
-                <span className="font-bold">Genre:</span> {book.genre}
-              </p>
-              <p className="text-lg mb-2">
-                <span className="font-bold">Publication Year:</span>{" "}
-                {moment(book.publicationDate).format("DD MMMM, YYYY")}
-              </p>
-              {book?.summary && (
-                <h3 className="text-xl font-[500] mt-4 mb-2">
-                  Summary about {book.title}
-                </h3>
-              )}
-              <p className="text-lg mb-4">{book?.summary}</p>
+              <div className="flex justify-center">
+                <p className="text-lg mb-2">
+                  <span className="font-bold">Author:</span> {book.author}
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <p className="text-lg mb-2">
+                  <span className="font-bold">Genre:</span> {book.genre}
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <p className="text-lg mb-2">
+                  <span className="font-bold">Publication Year:</span>{" "}
+                  {moment(book.publicationDate).format("DD MMMM, YYYY")}
+                </p>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex justify-center mt-8 mb-8">
+                <Link to={`/edit-book/${book._id}`}>
+                  {email === book?.email && (
+                    <button className="btn btn-success flex items-center px-4 py-[3px] mr-3">
+                      <FaEdit className="text-[18px] mr-2" /> <span>Edit</span>
+                    </button>
+                  )}
+                </Link>
+                {email === book?.email &&
+                  (isDeleteLoad ? (
+                    <button
+                      disabled
+                      className="flex items-center px-4 py-[3px]  ml-3"
+                    >
+                      Loading...
+                    </button>
+                  ) : (
+                    <button
+                      // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                      onClick={handleDeleteBook}
+                      className="btn btn-error flex items-center px-4 py-[3px] ml-3"
+                    >
+                      <FaTrash className="text-[18px] mr-2" />{" "}
+                      <span>Delete</span>
+                    </button>
+                  ))}
+              </div>
 
               {email && (
                 <form onSubmit={handleAddReview}>
-                  <label htmlFor="review" className="text-lg font-[500] mb-3">
-                    Write Review
+                  <label
+                    htmlFor="review"
+                    className="flex justify-center font-bold lg:text-4xl md:text-2xl text-xl mb-8 "
+                  >
+                    Give your review about the book
                   </label>
                   <textarea
                     id="review"
                     value={reviewComment}
                     onChange={(e) => setReviewComment(e.target.value)}
-                    className="w-full h-32 p-2 mb-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-                    placeholder="Write your review here..."
-                    required
+                    placeholder="Give your review about the book"
+                    className="textarea textarea-bordered textarea-xs w-full"
                   ></textarea>
+
+                  {/* <textarea
+                    id="review"
+                    value={reviewComment}
+                    onChange={(e) => setReviewComment(e.target.value)}
+                    className="w-full h-32 p-2 mb-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                    placeholder="Give your review about the book"
+                    required
+                  ></textarea> */}
                   {isLoading ? (
                     <button
                       disabled
@@ -192,17 +217,19 @@ const BookDetails = () => {
                       Loading...
                     </button>
                   ) : (
-                    <button
-                      type="submit"
-                      className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600"
-                    >
-                      Submit Review
-                    </button>
+                    <div className="flex justify-center mt-5">
+                      <button
+                        type="submit"
+                        className="btn px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600"
+                      >
+                        Submit Review
+                      </button>
+                    </div>
                   )}
                 </form>
               )}
 
-              <h3 className="text-xl font-bold mt-6">Customer Reviews</h3>
+              <h3 className="text-xl font-bold mt-6">Reviews</h3>
               <div className="mb-4">
                 {book?.customerReviews?.length > 0 ? (
                   <ul className="space-y-4">
@@ -211,7 +238,7 @@ const BookDetails = () => {
                         <li key={index} className="flex items-start mt-4">
                           <img
                             className="h-8 w-8 rounded-full"
-                            src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=2000"
+                            src="https://img.freepik.com/premium-vector/man-avatar-profile-round-icon_24640-14044.jpg?w=740"
                             alt="User Profile"
                           />
                           <div className="ml-4">
@@ -223,7 +250,7 @@ const BookDetails = () => {
                     )}
                   </ul>
                 ) : (
-                  <p>No reviews yet.</p>
+                  <p>There is no reviews yet.</p>
                 )}
               </div>
             </div>
