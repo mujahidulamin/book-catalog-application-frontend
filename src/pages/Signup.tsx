@@ -9,6 +9,8 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
 import { useSignUpMutation } from "../redux/features/users/usersApi";
 import swal from "sweetalert";
 import { setLoading } from "../redux/features/users/usersSlice";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -30,7 +32,7 @@ const Signup = () => {
       const response: any = await signUpMutation(credential);
       if (response.data) {
         swal(response?.data?.message, "", "success");
-        navigate("/login");
+        navigate("/signIn");
         setEmail("");
         setPassword("");
       } else {
@@ -50,32 +52,11 @@ const Signup = () => {
         <title>Sign Up</title>
       </Helmet>
 
-      <div
-        className="min-h-screen flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url(https://www.hippo.com/sites/default/files/content/blog/image/2022-02/how-to-make-a-home-library-hero.jpg)",
-        }}
-      >
-        <div className="bg-white w-[800px] shadow-md rounded-lg p-8 flex">
-          <div className="w-1/2 flex items-center justify-center">
-            <div>
-              <div className="text-center mb-4">
-                <img
-                  height="65px"
-                  width="65px"
-                  className="mx-auto"
-                  src="https://www.cityofsachse.com/ImageRepository/Document?documentID=7216"
-                  alt="logo"
-                />
-              </div>
-              <p className="text-center text-gray-700 text-lg mb-4">
-                Sign up to discover
-                <br /> ❤ <br /> share your books!
-              </p>
-            </div>
-          </div>
-          <div className="w-1/2">
+      <Navbar></Navbar>
+
+      <div>
+        <div className="max-w-md mx-auto my-[50px] p-5 border">
+          <div>
             <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">
               Create an Account
             </h2>
@@ -124,15 +105,15 @@ const Signup = () => {
               ) : (
                 <button
                   type="submit"
-                  className="w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors"
+                  className="btn px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 my-2 w-full"
                 >
                   Sign Up
                 </button>
               )}
-              <p className="text-gray-700 text-md mt-4">
+              <p className="text-gray-700 text-md mt-4 text-center">
                 Already have an account?{" "}
                 <Link to="/signIn">
-                  <a className="text-indigo-500 font-semibold hover:text-indigo-700">
+                  <a className="text-sky-500 font-semibold hover:text-sky-700">
                     Sign In
                   </a>
                 </Link>
@@ -141,6 +122,8 @@ const Signup = () => {
           </div>
         </div>
       </div>
+
+      <Footer></Footer>
     </>
   );
 };
