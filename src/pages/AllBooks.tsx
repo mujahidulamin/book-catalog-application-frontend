@@ -91,7 +91,7 @@ const AllBooks = () => {
             />
           </div>
 
-          <div className="flex pt-6 w-96  gap-8">
+          <div className="flex pt-6 gap-8">
             <div className="bg-white rounded ">
               <h2 className="text-[15px] text-sky-700 font-bold">Filters By Genre:</h2>
               <select
