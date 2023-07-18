@@ -16,6 +16,8 @@ interface IBook {
   customerReviews: [];
 }
 
+
+//wishlist
 export const Wishlist = () => {
   const { data: books, isError, isSuccess } = useGetWishlistQuery(null);
 

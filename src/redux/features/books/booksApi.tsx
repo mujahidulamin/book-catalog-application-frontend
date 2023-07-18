@@ -3,7 +3,7 @@
 import { api } from "../../api/apiSlice";
 
 
-//book api
+//books api
 const booksApi = api.injectEndpoints({
   endpoints: (builder) => ({
     addBook: builder.mutation({
