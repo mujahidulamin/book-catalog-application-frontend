@@ -15,6 +15,8 @@ interface IBook {
   customerReviews: [];
 }
 
+
+//reading list
 export const ReadSoon = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { data: books, isError, isSuccess } = useGetReadingListQuery(null);
