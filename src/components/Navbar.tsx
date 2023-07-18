@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className="bg-sky-200 px-4 py-3 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:px-10 sticky top-0 z-50 header">
-        <div className="relative flex items-center justify-between">
+        <div className="relative flex items-center justify-evenly">
           <Link
             to="/"
             aria-label="Enviable Learning"
@@ -52,6 +52,27 @@ const Navbar = () => {
                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
               >
                 All Books
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/wishlist"
+                aria-label="Sign Up"
+                title="Sign Up"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              >
+                Wishlist
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/readingList"
+                aria-label="readingList"
+                title="readingList"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              >
+                Reading List
               </NavLink>
             </li>
 
@@ -116,26 +137,6 @@ const Navbar = () => {
                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                   >
                     Sign Up
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/wishlist"
-                    aria-label="wishlist"
-                    title="wishlist"
-                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                  >
-                    Wishlist
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/readingList"
-                    aria-label="readingList"
-                    title="readingList"
-                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                  >
-                    Reading List
                   </NavLink>
                 </li>
               </>
@@ -218,6 +219,26 @@ const Navbar = () => {
                           All Books
                         </NavLink>
                       </li>
+                      <li>
+                        <NavLink
+                          to="/wishlist"
+                          aria-label="Sign Up"
+                          title="Sign Up"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        >
+                          Wishlist
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/readingList"
+                          aria-label="readingList"
+                          title="readingList"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        >
+                          Reading List
+                        </NavLink>
+                      </li>
 
                       <li>
                         {email && (
@@ -285,26 +306,6 @@ const Navbar = () => {
                               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                             >
                               Sign Up
-                            </NavLink>
-                          </li>
-                          <li>
-                            <NavLink
-                              to="/wishlist"
-                              aria-label="Sign Up"
-                              title="Sign Up"
-                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                            >
-                              Wishlist
-                            </NavLink>
-                          </li>
-                          <li>
-                            <NavLink
-                              to="/readingList"
-                              aria-label="readingList"
-                              title="readingList"
-                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                            >
-                              Reading List
                             </NavLink>
                           </li>
                         </>
