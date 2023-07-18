@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
 import { useSignUpMutation } from "../redux/features/users/usersApi";
-import swal from "sweetalert";
+import Swal from "sweetalert";
 import { setLoading } from "../redux/features/users/usersSlice";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -31,12 +31,12 @@ const Signup = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const response: any = await signUpMutation(credential);
       if (response.data) {
-        swal(response?.data?.message, "", "success");
+        Swal(response?.data?.message, "", "success");
         navigate("/signIn");
         setEmail("");
         setPassword("");
       } else {
-        swal(response?.error?.data?.message, "", "error");
+        Swal(response?.error?.data?.message, "", "error");
       }
       dispatch(setLoading(false));
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { ChangeEvent, useState } from "react";
+
 import { Helmet } from "react-helmet";
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import { useGetAllBooksQuery } from "../redux/features/books/booksApi";
+import { useState } from "react";
 
 interface IBook {
   _id: string;
@@ -28,23 +29,9 @@ const AllBooks = () => {
     "Detective",
   ];
 
-  // const publicationYears = [
-  //   "2011",
-  //   "2012",
-  //   "2013",
-  //   "2014",
-  //   "2015",
-  //   "2016",
-  //   "2017",
-  //   "2018",
-  //   "2019",
-  //   "2020",
-  //   "2021",
-  //   "2022",
-  //   "2023",
-  // ];
-
-  const publicationYears = Array.from({ length: 2023 - 1980 + 1 }, (_, index) => (1990 + index).toString());
+  const publicationYears = Array.from({ length: 2023 - 1980 + 1 }, (_, index) =>
+    (1990 + index).toString()
+  );
 
   // Filter Books
   const [selectGenre, setSelectGenre] = useState("");
@@ -93,7 +80,9 @@ const AllBooks = () => {
 
           <div className="flex pt-6 gap-8">
             <div className="bg-white rounded ">
-              <h2 className="text-[15px] text-sky-700 font-bold">Filters By Genre:</h2>
+              <h2 className="text-[15px] text-sky-700 font-bold">
+                Filters By Genre:
+              </h2>
               <select
                 className=" px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500 mx-auto"
                 onChange={(e) => setSelectGenre(e.target.value)}
@@ -113,7 +102,9 @@ const AllBooks = () => {
             </div>
 
             <div className="bg-white rounded">
-              <h2 className="text-[15px] text-sky-700 font-bold">Filters By Publication Year:</h2>
+              <h2 className="text-[15px] text-sky-700 font-bold">
+                Filters By Publication Year:
+              </h2>
               <select
                 className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500 mx-auto"
                 onChange={(e) => setSelectPublicationYear(e.target.value)}

@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Helmet } from "react-helmet";
 import Card from "../components/Card";
-import { Link } from "react-router-dom";
 import { useGetRecentBooksQuery } from "../redux/features/books/booksApi";
 import Banner from "../components/Banner";
 
@@ -43,9 +42,10 @@ const Home = () => {
           <div className="grid gap-12 row-gap-5 mb-8 lg:grid-cols-3 md:grid-cols-2 lg:row-gap-8">
             {books?.books?.map((book: IBook, i: number) => {
               return (
-                <Link key={i} to={`/bookDetails/${book._id}`}>
-                  <Card book={book} />
-                </Link>
+                <Card book={book} key={i}/>
+                // <Link key={i} to={`/bookDetails/${book._id}`}>
+                  
+                // </Link>
               );
             })}
           </div>

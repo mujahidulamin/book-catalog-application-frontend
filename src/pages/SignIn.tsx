@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
 import { useSignInMutation } from "../redux/features/users/usersApi";
 import { setLoading } from "../redux/features/users/usersSlice";
-import swal from "sweetalert";
+import Swal from "sweetalert";
 import Cookies from 'js-cookie';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -34,13 +34,13 @@ const SignIn = () => {
       const response: any = await signInMutation(credential);
       console.log(response);
       if (response.data) {
-        // swal(response?.data?.message, "", "success");
+        Swal(response?.data?.message, "", "success");
         Cookies.set('token', response?.data?.token);
         navigate("/");
         setEmail("");
         setPassword("");
       } else {
-        swal(response?.error?.data?.message, "", "error");
+        Swal(response?.error?.data?.message, "", "error");
       }
       dispatch(setLoading(false));
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

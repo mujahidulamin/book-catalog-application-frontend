@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import MainLayout from "./layouts/MainLayout";
 import jwt_decode, { JwtPayload } from "jwt-decode";
@@ -21,7 +22,6 @@ function App() {
     if (token) {
       try {
         const decodedToken: DecodedToken = jwt_decode(token);
-        // Perform any necessary checks or validations on the decoded token
         if (decodedToken && decodedToken?.email) {
           dispatch(setUser(decodedToken?.email));
         }
@@ -33,7 +33,6 @@ function App() {
 
   useEffect(() => {
     verifyUserToken();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   return (

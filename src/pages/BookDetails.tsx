@@ -7,7 +7,7 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import swal from "sweetalert";
+import Swal from "sweetalert";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { FaEdit } from "react-icons/fa";
@@ -61,7 +61,7 @@ const BookDetails = () => {
   const [deleteBook] = useDeleteBookMutation();
   const [isDeleteLoad, setDeleteLoad] = useState(false);
   const handleDeleteBook = () => {
-    swal({
+    Swal({
       title: "Are you sure?",
       icon: "warning",
       buttons: ["Cancel", "Yes"],
@@ -73,11 +73,11 @@ const BookDetails = () => {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const response: any = await deleteBook(id);
           if (response?.data) {
-            swal(response?.data?.message, "", "success");
+            Swal(response?.data?.message, "", "success");
             navigate("/allBooks");
             setDeleteLoad(false);
           } else {
-            swal("Book delete operation failed!", "", "error");
+            Swal("Book delete operation failed!", "", "error");
             setDeleteLoad(false);
           }
         }
