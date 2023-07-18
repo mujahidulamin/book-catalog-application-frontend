@@ -8,6 +8,8 @@ interface IProps {
   children: ReactNode;
 }
 
+//private route
+
 const PrivateRoute = ({ children }: IProps) => {
   const { user, isLoading } = useAppSelector((state) => state.users);
   const location = useLocation();
