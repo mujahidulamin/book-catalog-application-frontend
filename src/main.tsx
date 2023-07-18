@@ -6,6 +6,7 @@ import routes from "./routes/routes.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store.js";
 
+//store of redux
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
