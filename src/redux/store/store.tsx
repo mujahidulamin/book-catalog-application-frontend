@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import usersReducer from "../features/users/usersSlice";
 import { api } from "../api/apiSlice";
 
-
+//store
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
